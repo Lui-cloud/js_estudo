@@ -1,14 +1,25 @@
-let nomes = ["luiz", "marcelo", "joao"]
+let nomes = [
+    {nome:"luiz", cargo:"admin"},
+    {nome: "maria", cargo:"moderador"},
+    {nome: "joão", cargo:"usuario"}
+]
 
-function verificarNomes(nome) {
-    if(!nomes.includes(nome)) {
+function verificarNomes(nome){
+    const usuario = nomes.find(u => u.nome === nome);
+
+    if(!usuario) {
         return "acesso negado"
     }
 
-    if(nome === "luiz") {
-        return "bem vindo adm"
+    if (usuario.cargo === "admin"){
+        return "Bem vindo, admin"
     }
-        return "acesso negado"   
+
+    if (usuario.cargo === "moderador"){
+        return "Bem vindo moderador"
+    }
+
+    return "Bem vindo usuario"
 }
 
 const input = document.querySelector("#userName");
